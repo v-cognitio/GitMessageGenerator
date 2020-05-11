@@ -1,0 +1,28 @@
+<idea-plugin>
+    <id>com.v_cognitio.GitMessageGenerator</id>
+    <name>Git Message Generator</name>
+    <vendor email="sivirinvlad@gmail.com" url="">Vladislav Sivirin</vendor>
+
+    <description><![CDATA[
+    Plugin to easily create an extended commit message.<br>
+    <em></em>
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <action id="Commit.Button" class="com.v_cognitio.GitMessageGenerator.CustomCommitAction"
+                text="Create Commit Message"
+                description="Create commit message">
+            <add-to-group group-id="Vcs.MessageActionGroup" anchor="first"/>
+        </action>
+    </actions>
+</idea-plugin>
