@@ -1,5 +1,6 @@
-package com.v_cognitio.GitMessageGenerator;
+package com.v_cognitio.GitMessageGenerator.utils;
 
+import com.v_cognitio.GitMessageGenerator.engine.CommitTemplate;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;

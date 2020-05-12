@@ -1,4 +1,4 @@
-package com.v_cognitio.GitMessageGenerator;
+package com.v_cognitio.GitMessageGenerator.actions;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -7,6 +7,9 @@ import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.vcs.CommitMessageI;
 import com.intellij.openapi.vcs.VcsDataKeys;
 import com.intellij.openapi.vcs.ui.Refreshable;
+import com.v_cognitio.GitMessageGenerator.engine.CommitDialog;
+import com.v_cognitio.GitMessageGenerator.utils.Settings;
+import com.v_cognitio.GitMessageGenerator.utils.Utils;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.InputStream;
