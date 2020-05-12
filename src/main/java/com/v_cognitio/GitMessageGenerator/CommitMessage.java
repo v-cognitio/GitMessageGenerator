@@ -3,7 +3,7 @@ package com.v_cognitio.GitMessageGenerator;
 import org.apache.commons.lang.StringUtils;
 
 public class CommitMessage {
-    private static final int MAX_LINE_LENGTH = 72;
+
     private final String content;
 
     public CommitMessage(String type, String changeScope, String shortDescription, String longDescription, String closedIssues, String breakingChanges) {
