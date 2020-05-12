@@ -1,4 +1,4 @@
-package com.v_cognitio.GitMessageGenerator;
+package com.v_cognitio.GitMessageGenerator.utils;
 
 public class Settings {
 

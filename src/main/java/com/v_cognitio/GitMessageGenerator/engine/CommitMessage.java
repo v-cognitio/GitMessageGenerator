@@ -1,5 +1,7 @@
-package com.v_cognitio.GitMessageGenerator;
+package com.v_cognitio.GitMessageGenerator.engine;
 
+import com.v_cognitio.GitMessageGenerator.utils.Settings;
+import com.v_cognitio.GitMessageGenerator.utils.Utils;
 import org.apache.commons.lang.StringUtils;
 
 public class CommitMessage {
@@ -30,9 +32,7 @@ public class CommitMessage {
                                 String shortDescription,
                                 String longDescription,
                                 String breakingChanges,
-                                String closedIssues
-    ) {
-
+                                String closedIssues) {
         CommitTemplate commitTemplate = new CommitTemplate();
 
         if (StringUtils.isNotBlank(type)) {
@@ -53,7 +53,6 @@ public class CommitMessage {
         if (StringUtils.isNotBlank(closedIssues)) {
             commitTemplate.setCloses(closedIssues);
         }
-
 
         return Utils.convert(settings.messageTemplate, commitTemplate);
     }
