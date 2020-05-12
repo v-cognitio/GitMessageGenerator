@@ -46,7 +46,7 @@ public class CommitMessage {
             commitTemplate.setCloses(closedIssues);
         }
         String DEFAULT_TEMPLATE =
-                "#if($type)${type}#end\n" +
+                "#if($type)${type}#end${newline}\n" +
                 "#if($scope)(${scope})#end: #if($subject)${subject}#end\n" +
                 "${newline}\n" +
                 "#if($body)${body}#end\n" +
