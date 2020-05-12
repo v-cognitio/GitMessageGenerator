@@ -1,12 +1,22 @@
-package com.v_cognitio.GitMessageGenerator;
+package com.v_cognitio.GitMessageGenerator.engine;
 
+import com.v_cognitio.GitMessageGenerator.utils.Settings;
+import com.v_cognitio.GitMessageGenerator.utils.Utils;
 import org.apache.commons.lang.StringUtils;
 
 public class CommitMessage {
-    private static final int MAX_LINE_LENGTH = 72;
-    private final String content;
 
-    public CommitMessage(String type, String changeScope, String shortDescription, String longDescription, String closedIssues, String breakingChanges) {
+    private final String content;
+    private Settings settings;
+
+    public CommitMessage(Settings settings,
+                         String type,
+                         String changeScope,
+                         String shortDescription,
+                         String longDescription,
+                         String closedIssues,
+                         String breakingChanges) {
+        this.settings = settings;
         this.content = buildContent(
                 type,
                 changeScope,
@@ -22,9 +32,7 @@ public class CommitMessage {
                                 String shortDescription,
                                 String longDescription,
                                 String breakingChanges,
-                                String closedIssues
-    ) {
-
+                                String closedIssues) {
         CommitTemplate commitTemplate = new CommitTemplate();
 
         if (StringUtils.isNotBlank(type)) {
@@ -45,17 +53,8 @@ public class CommitMessage {
         if (StringUtils.isNotBlank(closedIssues)) {
             commitTemplate.setCloses(closedIssues);
         }
-        String DEFAULT_TEMPLATE =
-                "#if($type)${type}#end\n" +
-                "#if($scope)(${scope})#end: #if($subject)${subject}#end\n" +
-                "${newline}\n" +
-                "#if($body)${body}#end\n" +
-                "${newline}\n" +
-                "#if($changes)BREAKING CHANGE: ${changes}#end\n" +
-                "${newline}\n" +
-                "#if($closes)Closes ${closes}#end\n";
 
-        return VelocityUtils.convert(DEFAULT_TEMPLATE, commitTemplate);
+        return Utils.convert(settings.messageTemplate, commitTemplate);
     }
 
     @Override

@@ -1,13 +1,16 @@
-package com.v_cognitio.GitMessageGenerator;
+package com.v_cognitio.GitMessageGenerator.utils;
 
+import com.v_cognitio.GitMessageGenerator.engine.CommitTemplate;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.Properties;
 
-public class VelocityUtils {
+public class Utils {
 
     private static VelocityEngine engine;
 
@@ -36,10 +39,23 @@ public class VelocityUtils {
         velocityContext.put("changes", commitTemplate.getChanges());
         velocityContext.put("closes", commitTemplate.getCloses());
         velocityContext.put("newline", "\n");
-        String VM_LOG_TAG = "Leetcode VelocityUtils";
+        String VM_LOG_TAG = "Leetcode Utils";
         boolean isSuccess = engine.evaluate(velocityContext, writer, VM_LOG_TAG, template);
+
         if (!isSuccess) {
+            return null;
         }
         return writer.toString();
+    }
+
+    public static void loadProperties(InputStream stream, Settings settings) {
+        Properties properties = new Properties();
+        try {
+            properties.load(stream);
+        } catch (IOException e) {
+            throw new IllegalArgumentException("Such a property path doesn't exist");
+        }
+
+        settings.messageTemplate = properties.getProperty("MESSAGE_TEMPLATE");
     }
 }

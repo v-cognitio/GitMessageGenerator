@@ -1,11 +1,10 @@
-package com.v_cognitio.GitMessageGenerator;
+package com.v_cognitio.GitMessageGenerator.ui;
 
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.VfsUtil;
+import com.v_cognitio.GitMessageGenerator.engine.CommitMessage;
+import com.v_cognitio.GitMessageGenerator.utils.Settings;
 
 import javax.swing.*;
-import java.io.File;
-import java.util.List;
 
 
 public class CommitPanel {
@@ -17,16 +16,20 @@ public class CommitPanel {
     private JTextField closedIssues;
     private JTextArea breakingChanges;
 
-    public CommitPanel(Project project) {
-        //parameter
+    private Settings settings;
+    private Project project;
+
+    public CommitPanel(Project project, Settings settings) {
+        this.settings = settings;
     }
 
-    JPanel getMainPanel() {
+    public JPanel getMainPanel() {
         return mainPanel;
     }
 
-    CommitMessage getCommitMessage() {
+    public CommitMessage getCommitMessage() {
         return new CommitMessage(
+                settings,
                 type.getText().trim(),
                 changeScope.getText().trim(),
                 shortDescription.getText().trim(),
