@@ -14,9 +14,10 @@ public class CommitDialog extends DialogWrapper {
 
     public CommitDialog(@Nullable Project project, Settings settings) {
         super(project);
+        this.setResizable(false);
         panel = new CommitPanel(project, settings);
         setTitle("Commit");
-        setOKButtonText("OK");
+        setOKButtonText("Ok");
         init();
     }
 
