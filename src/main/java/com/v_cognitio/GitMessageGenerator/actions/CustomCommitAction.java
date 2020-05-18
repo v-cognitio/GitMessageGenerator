@@ -13,8 +13,6 @@ import com.v_cognitio.GitMessageGenerator.utils.Settings;
 import com.v_cognitio.GitMessageGenerator.utils.Utils;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.InputStream;
-
 public class CustomCommitAction extends AnAction implements DumbAware {
 
     private Settings settings = new Settings();

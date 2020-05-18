@@ -1,24 +1,23 @@
 package com.v_cognitio.GitMessageGenerator.ui;
 
 import com.intellij.openapi.project.Project;
+import com.intellij.util.containers.hash.HashMap;
 import com.v_cognitio.GitMessageGenerator.model.CommitMessage;
 import com.v_cognitio.GitMessageGenerator.utils.Settings;
 
 import javax.swing.*;
+import javax.swing.text.JTextComponent;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 public class CommitPanel {
 
-    private static final int DEFAULT_SCROLLABLE_SIZE = 120;
-
     private JPanel mainPanel;
-    private JTextField type;
-    private JTextField changeScope;
-    private JTextField shortDescription;
-    private JTextArea longDescription;
-    private JTextField closedIssues;
-    private JTextArea breakingChanges;
+
+    private Map<String, JTextComponent> componentList = new HashMap<>();
 
     private Settings settings;
     private Project project;
@@ -44,20 +43,16 @@ public class CommitPanel {
         minPanelSize += elementSize;
     }
 
+    public void addTextComponent(String name, JTextComponent component) {
+        componentList.put(name, component);
+    }
+
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
     public CommitMessage getCommitMessage() {
-        return new CommitMessage(
-                settings,
-                type.getText().trim(),
-                changeScope.getText().trim(),
-                shortDescription.getText().trim(),
-                longDescription.getText().trim(),
-                closedIssues.getText().trim(),
-                breakingChanges.getText().trim()
-        );
+        return new CommitMessage(settings, componentList);
     }
 
 }

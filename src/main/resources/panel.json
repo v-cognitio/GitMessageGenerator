@@ -2,27 +2,27 @@
 
   "fields" : [
     {
-      "fieldName" : "field1",
-      "fieldType" : "SCROLLABLE"
-    },
-    {
-      "fieldName" : "field2",
+      "fieldName" : "type",
       "fieldType" : "DEFAULT_TEXT"
     },
     {
-      "fieldName" : "field3",
+      "fieldName" : "scope",
       "fieldType" : "DEFAULT_TEXT"
     },
     {
-      "fieldName" : "field4",
+      "fieldName" : "subject",
+      "fieldType" : "DEFAULT_TEXT"
+    },
+    {
+      "fieldName" : "body",
       "fieldType" : "SCROLLABLE"
     },
     {
-      "fieldName" : "field5",
-      "fieldType" : "SCROLLABLE"
+      "fieldName" : "changes",
+      "fieldType" : "DEFAULT_TEXT"
     },
     {
-      "fieldName" : "field6",
+      "fieldName" : "closes",
       "fieldType" : "DEFAULT_TEXT"
     }
   ]

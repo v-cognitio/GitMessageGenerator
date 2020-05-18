@@ -43,6 +43,7 @@ public class PanelBuilder {
 
         panel.addElement(new JLabel(text), c1, 0);
         panel.addElement(area, c2, settings.defaultTextFieldHeight);
+        panel.addTextComponent(text, area);
     }
 
     private void addNewScrollableTextArea(String text) {
@@ -59,6 +60,7 @@ public class PanelBuilder {
 
         panel.addElement(new JLabel(text), c1, 0);
         panel.addElement(scroll, c2, settings.defaultScrollableHeight);
+        panel.addTextComponent(text, area);
     }
 
     private GridBagConstraints getDefaultConstraints() {

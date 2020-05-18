@@ -1,13 +1,15 @@
 package com.v_cognitio.GitMessageGenerator.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.v_cognitio.GitMessageGenerator.model.CommitTemplate;
+import com.v_cognitio.GitMessageGenerator.model.PanelField;
 import com.v_cognitio.GitMessageGenerator.model.PanelFieldHandler;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 
+import javax.swing.text.JTextComponent;
 import java.io.*;
+import java.util.Map;
 import java.util.Properties;
 
 public class Utils {
@@ -29,15 +31,15 @@ public class Utils {
         engine.init(props);
     }
 
-    public static String convert(String template, CommitTemplate commitTemplate) {
+    public static String convert(String template,
+                                 PanelFieldHandler handler, Map<String, JTextComponent> components) {
         StringWriter writer = new StringWriter();
         VelocityContext velocityContext = new VelocityContext();
-        velocityContext.put("type", commitTemplate.getType());
-        velocityContext.put("scope", commitTemplate.getScope());
-        velocityContext.put("subject", commitTemplate.getSubject());
-        velocityContext.put("body", commitTemplate.getBody());
-        velocityContext.put("changes", commitTemplate.getChanges());
-        velocityContext.put("closes", commitTemplate.getCloses());
+
+        for (PanelField field : handler.fields) {
+            velocityContext.put(field.fieldName, components.get(field.fieldName).getText().trim());
+        }
+
         velocityContext.put("newline", "\n");
         String VM_LOG_TAG = "Leetcode Utils";
         boolean isSuccess = engine.evaluate(velocityContext, writer, VM_LOG_TAG, template);
