@@ -1,13 +1,13 @@
 package com.v_cognitio.GitMessageGenerator.utils;
 
-import com.v_cognitio.GitMessageGenerator.engine.CommitTemplate;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.v_cognitio.GitMessageGenerator.model.CommitTemplate;
+import com.v_cognitio.GitMessageGenerator.model.PanelFieldHandler;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringWriter;
+import java.io.*;
 import java.util.Properties;
 
 public class Utils {
@@ -65,5 +65,10 @@ public class Utils {
                 properties.getProperty("DEFAULT_LABEL_RIGHT_INSET"));
         settings.panelBaseSize= Integer.parseInt(
                 properties.getProperty("PANEL_BASE_SIZE"));
+    }
+
+    public static PanelFieldHandler getFieldsHandler(InputStream path) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(path, PanelFieldHandler.class);
     }
 }

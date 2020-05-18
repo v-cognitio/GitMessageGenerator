@@ -1,0 +1,13 @@
+{
+
+  "fields" : [
+    {
+      "fieldName" : "field1",
+      "fieldType" : "SCROLLABLE"
+    },
+    {
+      "fieldName" : "field2",
+      "fieldType" : "SCROLLABLE"
+    }
+  ]
+}

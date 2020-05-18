@@ -2,6 +2,7 @@ package com.v_cognitio.GitMessageGenerator.engine;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.DialogWrapper;
+import com.v_cognitio.GitMessageGenerator.model.CommitMessage;
 import com.v_cognitio.GitMessageGenerator.ui.CommitPanel;
 import com.v_cognitio.GitMessageGenerator.utils.Settings;
 import org.jetbrains.annotations.Nullable;

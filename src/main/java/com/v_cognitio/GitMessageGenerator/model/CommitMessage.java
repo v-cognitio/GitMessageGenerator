@@ -1,4 +1,4 @@
-package com.v_cognitio.GitMessageGenerator.engine;
+package com.v_cognitio.GitMessageGenerator.model;
 
 import com.v_cognitio.GitMessageGenerator.utils.Settings;
 import com.v_cognitio.GitMessageGenerator.utils.Utils;

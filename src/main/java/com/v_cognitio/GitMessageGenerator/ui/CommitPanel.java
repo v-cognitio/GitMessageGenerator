@@ -1,8 +1,7 @@
 package com.v_cognitio.GitMessageGenerator.ui;
 
 import com.intellij.openapi.project.Project;
-import com.intellij.util.ui.JBUI;
-import com.v_cognitio.GitMessageGenerator.engine.CommitMessage;
+import com.v_cognitio.GitMessageGenerator.model.CommitMessage;
 import com.v_cognitio.GitMessageGenerator.utils.Settings;
 
 import javax.swing.*;
