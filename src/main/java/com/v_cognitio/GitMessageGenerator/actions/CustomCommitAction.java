@@ -8,11 +8,10 @@ import com.intellij.openapi.vcs.CommitMessageI;
 import com.intellij.openapi.vcs.VcsDataKeys;
 import com.intellij.openapi.vcs.ui.Refreshable;
 import com.v_cognitio.GitMessageGenerator.engine.CommitDialog;
+import com.v_cognitio.GitMessageGenerator.model.PanelFieldHandler;
 import com.v_cognitio.GitMessageGenerator.utils.Settings;
 import com.v_cognitio.GitMessageGenerator.utils.Utils;
 import org.jetbrains.annotations.Nullable;
-
-import java.io.InputStream;
 
 public class CustomCommitAction extends AnAction implements DumbAware {
 
@@ -20,9 +19,14 @@ public class CustomCommitAction extends AnAction implements DumbAware {
 
     public CustomCommitAction() {
         try {
-            InputStream inputStream = getClass().getClassLoader().
-                    getResourceAsStream("config.properties");
-            Utils.loadProperties(inputStream, settings);
+            Utils.loadProperties(
+                    getClass().getClassLoader().getResourceAsStream("config.properties"),
+                    settings
+            );
+
+            settings.handler = Utils.getFieldsHandler(
+                    getClass().getClassLoader().getResourceAsStream("panel.json")
+            );
         } catch (Exception e) {
             e.printStackTrace();
         }
