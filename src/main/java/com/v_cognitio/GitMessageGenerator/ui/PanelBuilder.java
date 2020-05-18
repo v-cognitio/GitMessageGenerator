@@ -1,6 +1,7 @@
 package com.v_cognitio.GitMessageGenerator.ui;
 
 import com.intellij.util.ui.JBUI;
+import com.v_cognitio.GitMessageGenerator.model.PanelField;
 import com.v_cognitio.GitMessageGenerator.utils.Settings;
 
 import javax.swing.*;
@@ -18,25 +19,71 @@ public class PanelBuilder {
         this.settings = settings;
     }
 
-    private void addNewScrollableTextArea(String text) {
-        GridBagConstraints c1 = new GridBagConstraints();
-        c1.anchor = GridBagConstraints.NORTH;
-        c1.fill = GridBagConstraints.CENTER;
-        c1.gridy = lastGridY;
-        c1.insets = JBUI.insetsRight(settings.defaultLabelRightInset);
+    public void build() {
+        for (PanelField field : settings.handler.fields) {
+            switch (field.fieldType) {
+                case DEFAULT_TEXT:
+                    addNewDefaultTextArea(field.fieldName);
+                    break;
+                case SCROLLABLE:
+                    addNewScrollableTextArea(field.fieldName);
+                    break;
+            }
+        }
+    }
 
-        GridBagConstraints c2 = new GridBagConstraints();
-        c2.anchor = GridBagConstraints.NORTH;
-        c2.fill = GridBagConstraints.HORIZONTAL;
-        c2.gridx = 1; c2.gridy = lastGridY++;
-        c2.weightx = 1.0; c2.weighty = 0.5;
+    private void addNewDefaultTextArea(String text) {
+        GridBagConstraints c1 = getLabelConstraints();
+
+        GridBagConstraints c2 = getTextFieldConstraints();
+        c2.weighty = 1.0;
+
+        JTextField area = new JTextField();
+        area.setPreferredSize(new Dimension(-1, settings.defaultTextFieldHeight));
+
+        panel.addElement(new JLabel(text), c1, 0);
+        panel.addElement(area, c2, settings.defaultTextFieldHeight);
+    }
+
+    private void addNewScrollableTextArea(String text) {
+        GridBagConstraints c1 = getLabelConstraints();
+
+        GridBagConstraints c2 = getTextFieldConstraints();
+        c2.weighty = 0.0;
+        c2.gridwidth = settings.defaultTextFieldHeight;
 
         JTextArea area = new JTextArea();
         JScrollPane scroll = new JScrollPane(area);
-        scroll.setPreferredSize(new Dimension(-1, settings.defaultScrollableHeight));
+        scroll.setPreferredSize(new Dimension(-1,
+                settings.defaultScrollableHeight + settings.defaultTextBottomInset));
 
         panel.addElement(new JLabel(text), c1, 0);
         panel.addElement(scroll, c2, settings.defaultScrollableHeight);
+    }
 
+    private GridBagConstraints getDefaultConstraints() {
+        GridBagConstraints c = new GridBagConstraints();
+        c.anchor = GridBagConstraints.NORTH;
+        c.fill = GridBagConstraints.CENTER;
+        c.gridy = lastGridY;
+
+        return c;
+    }
+
+    private GridBagConstraints getTextFieldConstraints() {
+        GridBagConstraints c = getDefaultConstraints();
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 1; c.gridy = lastGridY++;
+        c.weightx = 1.0;
+        c.insets = JBUI.insetsBottom(settings.defaultTextBottomInset);
+
+        return c;
+    }
+
+    private GridBagConstraints getLabelConstraints() {
+        GridBagConstraints c = getDefaultConstraints();
+        c.insets = JBUI.insetsRight(settings.defaultLabelRightInset);
+
+        return c;
     }
 }

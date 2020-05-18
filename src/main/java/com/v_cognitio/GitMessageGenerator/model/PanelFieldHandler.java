@@ -8,5 +8,5 @@ import java.util.List;
 public class PanelFieldHandler {
 
     @JsonDeserialize(as = ArrayList.class)
-    List<PanelField> fields;
+    public List<PanelField> fields;
 }

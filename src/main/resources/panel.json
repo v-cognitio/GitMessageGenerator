@@ -7,7 +7,23 @@
     },
     {
       "fieldName" : "field2",
+      "fieldType" : "DEFAULT_TEXT"
+    },
+    {
+      "fieldName" : "field3",
+      "fieldType" : "DEFAULT_TEXT"
+    },
+    {
+      "fieldName" : "field4",
       "fieldType" : "SCROLLABLE"
+    },
+    {
+      "fieldName" : "field5",
+      "fieldType" : "SCROLLABLE"
+    },
+    {
+      "fieldName" : "field6",
+      "fieldType" : "DEFAULT_TEXT"
     }
   ]
 }

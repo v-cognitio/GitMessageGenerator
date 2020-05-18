@@ -32,6 +32,7 @@ public class CommitPanel {
         mainPanel.setLayout(new GridBagLayout());
         mainPanel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 
+        new PanelBuilder(this, settings).build();
 
         mainPanel.setMinimumSize(new Dimension(settings.minimalTextFieldWidth, minPanelSize));
         mainPanel.revalidate();

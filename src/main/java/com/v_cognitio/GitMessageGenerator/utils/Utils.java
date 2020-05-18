@@ -57,12 +57,16 @@ public class Utils {
         }
 
         settings.messageTemplate = properties.getProperty("MESSAGE_TEMPLATE");
+        settings.defaultTextFieldHeight = Integer.parseInt(
+                properties.getProperty("DEFAULT_TEXT_FIELD_HEIGHT"));
         settings.defaultScrollableHeight = Integer.parseInt(
                 properties.getProperty("DEFAULT_SCROLLABLE_HEIGHT"));
         settings.minimalTextFieldWidth = Integer.parseInt(
                 properties.getProperty("MINIMAL_TEXT_FIELD_WIDTH"));
         settings.defaultLabelRightInset = Integer.parseInt(
                 properties.getProperty("DEFAULT_LABEL_RIGHT_INSET"));
+        settings.defaultTextBottomInset = Integer.parseInt(
+                properties.getProperty("DEFAULT_TEXT_BOTTOM_INSET"));
         settings.panelBaseSize= Integer.parseInt(
                 properties.getProperty("PANEL_BASE_SIZE"));
     }
