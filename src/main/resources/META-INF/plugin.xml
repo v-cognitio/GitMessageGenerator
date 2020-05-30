@@ -21,7 +21,8 @@
     <actions>
         <action id="Commit.Button" class="com.v_cognitio.GitMessageGenerator.actions.CustomCommitAction"
                 text="Create Commit Message"
-                description="Create commit message">
+                description="Create commit message"
+                icon="AllIcons.Actions.Edit">
             <add-to-group group-id="Vcs.MessageActionGroup" anchor="first"/>
         </action>
     </actions>
