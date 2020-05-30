@@ -1,0 +1,29 @@
+{
+
+  "fields" : [
+    {
+      "fieldName" : "type",
+      "fieldType" : "DEFAULT_TEXT"
+    },
+    {
+      "fieldName" : "scope",
+      "fieldType" : "DEFAULT_TEXT"
+    },
+    {
+      "fieldName" : "subject",
+      "fieldType" : "DEFAULT_TEXT"
+    },
+    {
+      "fieldName" : "body",
+      "fieldType" : "SCROLLABLE"
+    },
+    {
+      "fieldName" : "changes",
+      "fieldType" : "DEFAULT_TEXT"
+    },
+    {
+      "fieldName" : "closes",
+      "fieldType" : "DEFAULT_TEXT"
+    }
+  ]
+}
