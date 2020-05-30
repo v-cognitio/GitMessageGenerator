@@ -8,7 +8,6 @@ import com.intellij.openapi.vcs.CommitMessageI;
 import com.intellij.openapi.vcs.VcsDataKeys;
 import com.intellij.openapi.vcs.ui.Refreshable;
 import com.v_cognitio.GitMessageGenerator.engine.CommitDialog;
-import com.v_cognitio.GitMessageGenerator.model.PanelFieldHandler;
 import com.v_cognitio.GitMessageGenerator.utils.Settings;
 import com.v_cognitio.GitMessageGenerator.utils.Utils;
 import org.jetbrains.annotations.Nullable;

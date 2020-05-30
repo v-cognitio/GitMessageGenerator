@@ -8,7 +8,9 @@ import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 
 import javax.swing.text.JTextComponent;
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringWriter;
 import java.util.Map;
 import java.util.Properties;
 
