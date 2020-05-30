@@ -2,10 +2,8 @@ package com.v_cognitio.GitMessageGenerator.model;
 
 import com.v_cognitio.GitMessageGenerator.utils.Settings;
 import com.v_cognitio.GitMessageGenerator.utils.Utils;
-import org.apache.commons.lang.StringUtils;
 
 import javax.swing.text.JTextComponent;
-import java.util.List;
 import java.util.Map;
 
 public class CommitMessage {
